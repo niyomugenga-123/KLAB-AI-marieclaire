@@ -50,3 +50,15 @@ klab-ai-marieclaire/
 ├── .env.example     # environment variable names (no real values)
 └── .gitignore       # files/folders excluded from version control
 ```
+
+## Dataset (Assignment 2)
+
+- **Name:** Carvana - Predict Car Prices
+- **Source:** Kaggle — https://www.kaggle.com/datasets/ravishah1/carvana-predict-car-prices (by Ravi Shah)
+- **License:** CC0: Public Domain
+- **Rows/columns:** 22,000 rows, 4 columns (`Name`, `Year`, `Miles`, `Price`) before
+  cleaning; 9,317 rows after removing exact duplicates.
+- **Why chosen:** a realistic, moderately messy dataset with one categorical and three
+  numeric columns — real data-quality problems (corrupted `Year` values, many duplicate
+  rows) to practice deliberate cleaning decisions on, rather than a dataset that's
+  already clean.
