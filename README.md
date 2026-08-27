@@ -62,3 +62,24 @@ klab-ai-marieclaire/
   numeric columns — real data-quality problems (corrupted `Year` values, many duplicate
   rows) to practice deliberate cleaning decisions on, rather than a dataset that's
   already clean.
+
+  
+## Day 5 — Linear Regression & Random Forest (Car Price Prediction)
+
+Notebook: `notebooks/day05_ml_models.ipynb`
+
+Builds two models to predict used car `Price` from `Year` and `Miles`, using
+`data/raw/carvana.csv`, then compares them.
+
+**Results:**
+
+| Model | MAE | R² |
+|---|---|---|
+| Linear Regression | $4,131.52 | 0.368 |
+| Random Forest | $4,508.57 | 0.168 |
+
+**Finding:** Linear Regression outperformed Random Forest here. With only two
+fairly linear features (`Year`, `Miles`) and noisy labels (identical Year/Miles
+rows with different prices), Random Forest's added flexibility overfits to noise
+rather than capturing genuine complexity — so the simpler model generalizes
+better. Full reasoning is in the notebook's conclusion section.
