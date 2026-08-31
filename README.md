@@ -83,3 +83,21 @@ fairly linear features (`Year`, `Miles`) and noisy labels (identical Year/Miles
 rows with different prices), Random Forest's added flexibility overfits to noise
 rather than capturing genuine complexity — so the simpler model generalizes
 better. Full reasoning is in the notebook's conclusion section.
+
+## Week 2: Classification & Metrics
+
+### Day 3: Classification Metrics Assignment ✅
+- **Task:** Build a classifier to predict premium cars (≥$30,000) vs regular cars
+- **Dataset:** Carvana listings (21,000 samples, 9.8% premium)
+- **Model:** Logistic Regression
+- **Features:** Age, Miles
+- **Results:**
+  - Accuracy: 94.2% (misleading on imbalanced data)
+  - Precision: 80% (when it says premium, it's correct 4/5 times)
+  - Recall: 1.5% (finds only 4 out of 260 actual premium cars)
+  - F1: 3%
+  - ROC-AUC: 80.4%
+- **Key Insight:** Recall prioritized as business metric — missing premium listings costs more than false alarms
+- **Files:** 
+  - `notebooks/Metrics Assignment.ipynb` — full implementation
+  - `reports/Classification_Metrics_Defense.md` — 1-page defense essay
