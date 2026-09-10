@@ -101,3 +101,56 @@ better. Full reasoning is in the notebook's conclusion section.
 - **Files:** 
   - `notebooks/Metrics Assignment.ipynb` — full implementation
   - `reports/Classification_Metrics_Defense.md` — 1-page defense essay
+
+  ## Week 3: Unsupervised Learning & Clustering Evaluation
+
+### Assignment: Evaluating Unsupervised Models (Overfitting, Underfitting, and How to Fix Them)
+
+**Challenge:** How do you evaluate clustering models without labels? No "accuracy" available, yet models can still overfit/underfit.
+
+**5-Part Assignment Completed:**
+
+#### Part 1: Overlapping Clusters
+- Generated data with increasing cluster overlap (cluster_std=1.15 → 2.5)
+- Observed silhouette score peak flatten as clusters overlap
+- **Finding:** Silhouette loses confidence on ambiguous data
+
+#### Part 2: Unequal Cluster Sizes
+- Tested K-Means vs DBSCAN with unequal sizes [0.5, 0.5, 3.0, 0.5]
+- **Finding:** K-Means splits large clusters; DBSCAN respects actual cluster sizes
+
+#### Part 3: Pure Noise Baseline
+- Ran clustering on 1200 random points (no real structure)
+- K-Means still returned clusters with silhouette ≈ 0.33
+- **Finding:** Silhouette alone gives false positives; need threshold (~0.50)
+
+#### Part 4: Automatic Elbow Detection
+- Implemented function to find elbow (furthest point from reference line)
+- Tested on original (std=1.15) and hard data (std=2.5)
+- **Finding:** Elbow robust on synthetic data but misled by smooth inertia curves
+
+#### Part 5: Real Data (Wine Dataset)
+- Applied metrics to 178-sample wine dataset (13 features, 3 true classes)
+- **Silhouette predicted:** k=3 ✅ (CORRECT)
+- **Elbow predicted:** k=4 ❌ (incorrect)
+- **Key Insight:** Silhouette is more reliable than elbow on real data
+
+### Key Learnings
+
+| Metric | Strengths | Weaknesses | When to Use |
+|--------|-----------|-----------|------------|
+| **Silhouette** | Measures cluster cohesion + separation | Low scores on all real data | Primary metric; best for real data |
+| **Elbow** | Clear geometric interpretation | Misled by smooth curves | Confirmation; synthetic data |
+| **Stability** | Real structure survives resampling | Computationally expensive | Verify final answer |
+| **Inertia** | Always available | Always decreases; can't choose k | Supporting info only |
+
+### Critical Rules Learned
+
+1. **Silhouette score threshold:** < 0.50 = probably noise, > 0.60 = likely real
+2. **When methods disagree:** Trust silhouette (measures what we care about)
+3. **Labels ≠ ground truth:** Wine has 3 classes, but that's just one clustering perspective
+4. **Use multiple metrics:** No single metric is perfect; combine for robust decisions
+
+### Files
+
+-
