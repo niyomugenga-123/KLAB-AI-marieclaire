@@ -154,3 +154,25 @@ better. Full reasoning is in the notebook's conclusion section.
 ### Files
 
 -
+## Chapter 1 — Image Classifier (Bird / Forest / Mountain / River)
+
+Notebook: `notebooks/Chapter1/Chapter1_Image_Classifier.ipynb`
+Model: `models/image_classifier_model.pkl`
+Report: `reports/Chapter1_Report.md`
+
+Trained a ResNet18 image classifier (transfer learning, fastai) on ~30 custom
+photos per category across 4 classes: bird, forest, mountain, river.
+
+**Results:**
+- Final validation accuracy: **83.3%**
+- Differentiation test: correctly classified **4/4** held-out sample images,
+  one from each category, confirming the model distinguishes between all
+  classes rather than favoring one
+
+**Key steps:**
+- Resized all images to a consistent 224x224 before batching
+  (`item_tfms=Resize(224)`), required since raw photos varied in dimensions
+- Used `fine_tune()` for transfer learning: 1 frozen warm-up epoch, then 4
+  epochs training the full network
+- Exported the full inference pipeline (model + preprocessing) with
+  `learn.export()` for reuse
