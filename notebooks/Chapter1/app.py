@@ -12,7 +12,7 @@ st.write("Classify images as: Bird, Forest, Mountain, or River")
 # Load model
 @st.cache_resource
 def load_model():
-    return load_learner(Path(__file__).parent / 'export.pkl')
+    return load_learner('export.pkl')
 
 learn = load_model()
 
