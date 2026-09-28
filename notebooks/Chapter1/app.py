@@ -14,7 +14,11 @@ st.write("Classify images as: Bird, Forest, Mountain, or River")
 @st.cache_resource
 def load_model():
     model_path = os.path.join(os.path.dirname(__file__), 'export.pkl')
-    return load_learner(model_path)
+    try:
+        return load_learner(model_path)
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 learn = load_model()
 
