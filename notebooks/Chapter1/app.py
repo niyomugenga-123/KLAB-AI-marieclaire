@@ -2,6 +2,7 @@ import streamlit as st
 from fastai.vision.all import *
 from pathlib import Path
 from PIL import Image
+import os
 
 # Page config
 st.set_page_config(page_title="Image Classifier", layout="centered")
@@ -12,7 +13,8 @@ st.write("Classify images as: Bird, Forest, Mountain, or River")
 # Load model
 @st.cache_resource
 def load_model():
-    return load_learner('export.pkl')
+    model_path = os.path.join(os.path.dirname(__file__), 'export.pkl')
+    return load_learner(model_path)
 
 learn = load_model()
 
