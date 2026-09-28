@@ -1,14 +1,15 @@
+import sys
+import pathlib
+
+# Patch BEFORE importing fastai
+if not hasattr(pathlib, 'WindowsPath'):
+    pathlib.WindowsPath = pathlib.PosixPath
+
 import streamlit as st
 from fastai.vision.all import *
 from pathlib import Path
 from PIL import Image
 import os
-import sys
-import pathlib
-
-# Fix Windows Path compatibility for Linux
-if not hasattr(pathlib, 'WindowsPath'):
-    pathlib.WindowsPath = pathlib.PosixPath
 
 # Page config
 st.set_page_config(page_title="Image Classifier", layout="centered")
