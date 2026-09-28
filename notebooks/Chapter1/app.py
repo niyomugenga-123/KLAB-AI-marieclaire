@@ -3,6 +3,12 @@ from fastai.vision.all import *
 from pathlib import Path
 from PIL import Image
 import os
+import sys
+import pathlib
+
+# Fix Windows Path compatibility for Linux
+if not hasattr(pathlib, 'WindowsPath'):
+    pathlib.WindowsPath = pathlib.PosixPath
 
 # Page config
 st.set_page_config(page_title="Image Classifier", layout="centered")
@@ -14,11 +20,7 @@ st.write("Classify images as: Bird, Forest, Mountain, or River")
 @st.cache_resource
 def load_model():
     model_path = os.path.join(os.path.dirname(__file__), 'export.pkl')
-    try:
-        return load_learner(model_path)
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        return None
+    return load_learner(model_path)
 
 learn = load_model()
 
