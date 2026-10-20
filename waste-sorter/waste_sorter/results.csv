@@ -1,0 +1,4 @@
+timestamp,team,week,method,train_fraction,test_accuracy,test_macro_f1,trash_f1,local_accuracy,params_millions,train_minutes,notes
+2026-10-19T13:44,NIYOMUGENGA MARIE CLAIRE,1,CNN from scratch,1.0,0.6860,0.6332,0.3077,0.2667,0.0945,0.9700,SmallCNN 128px 15 epochs
+2026-10-19T14:08,NIYOMUGENGA MARIE CLAIRE,1,ResNet-18 fine-tuned,1.0,0.9367,0.9264,0.8500,0.2833,11.1796,0.6289,ImageNet weights 224px 5 epochs
+2026-10-20T11:23,NIYOMUGENGA MARIE CLAIRE,1,ResNet-18 + augmentation,1.0,0.9235,0.9154,0.8571,0.3667,11.1796,35.3046,augment 8 epochs
